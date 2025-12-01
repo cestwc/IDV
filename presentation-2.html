@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Project Gallery</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+  :root {
+    --color-teal: #4fbccb;
+    --color-gray: #e8e8e8;
+    --color-text: #2c3e50;
+    --font-main: "Inter", sans-serif;
+  }
+
+  body {
+    font-family: var(--font-main);
+    margin: 0;
+    padding: 20px;
+    background: #f7f7f7;
+    color: var(--color-text);
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    background: white;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    transition: transform .15s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+  }
+
+  .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid var(--color-teal);
+    object-fit: cover;
+  }
+
+  .name {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 12px;
+  }
+
+  .username {
+    font-size: 0.85em;
+    color: #888;
+  }
+
+  .student-id {
+    font-size: 0.85em;
+    margin-top: 4px;
+    color: #666;
+  }
+
+  .priority {
+    margin-top: 8px;
+    font-size: 0.75em;
+    background: var(--color-teal);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    display: inline-block;
+  }
+
+</style>
+</head>
+<body>
+
+<h1>Project Gallery</h1>
+
+<div id="grid" class="grid"></div>
+
+<script id="students-data" type="application/json">
+[
+  {
+    "name": "Apeksha",
+    "student_id": "1010969",
+    "link": "https://athira-777.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": null,
+    "avatar_url": "https://github.com/ghost.png?size=200"
+  },
+  {
+    "name": "Apoorva Mani",
+    "student_id": "1011115",
+    "link": "https://apoorva-mani.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "apoorva-mani",
+    "avatar_url": "https://github.com/apoorva-mani.png?size=200"
+  },
+  {
+    "name": "Athira Pilakkat",
+    "student_id": "1011113",
+    "link": "https://athira-777.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "athira-777",
+    "avatar_url": "https://github.com/athira-777.png?size=200"
+  },
+  {
+    "name": "CHEN LEXIN",
+    "student_id": "1010796",
+    "link": "https://clr110505.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "clr110505",
+    "avatar_url": "https://github.com/clr110505.png?size=200"
+  },
+  {
+    "name": "Chaewoon Kim",
+    "student_id": "1003724",
+    "link": "https://chaewoon83.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "chaewoon83",
+    "avatar_url": "https://github.com/chaewoon83.png?size=200"
+  },
+  {
+    "name": "Charlotte Chiew",
+    "student_id": "1010850",
+    "link": "https://charlte09-tech.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "charlte09-tech",
+    "avatar_url": "https://github.com/charlte09-tech.png?size=200"
+  },
+  {
+    "name": "Chen Hui",
+    "student_id": "1010776",
+    "link": "https://3246224050d-prog.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "3246224050d-prog",
+    "avatar_url": "https://github.com/3246224050d-prog.png?size=200"
+  },
+  {
+    "name": "Chen Xingyu",
+    "student_id": "1010807",
+    "link": "https://estherchan702.github.io/IDV-assignment5/assignment5.html",
+    "order": 0,
+    "github_username": "estherchan702",
+    "avatar_url": "https://github.com/estherchan702.png?size=200"
+  },
+  {
+    "name": "Fan Mingzhe",
+    "student_id": "1010813",
+    "link": "https://fff-mz.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "fff-mz",
+    "avatar_url": "https://github.com/fff-mz.png?size=200"
+  },
+  {
+    "name": "Goh Yu Bei",
+    "student_id": "1010970",
+    "link": "https://gohyubei.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "gohyubei",
+    "avatar_url": "https://github.com/gohyubei.png?size=200"
+  },
+  {
+    "name": "HUYUANQI",
+    "student_id": "1010767",
+    "link": "https://huyuanqi.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "huyuanqi",
+    "avatar_url": "https://github.com/huyuanqi.png?size=200"
+  },
+  {
+    "name": "Jaime Lorenzo Rayos Jover",
+    "student_id": "1010984",
+    "link": "https://jme-nzo.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "jme-nzo",
+    "avatar_url": "https://github.com/jme-nzo.png?size=200"
+  },
+  {
+    "name": "Jasleena jassal",
+    "student_id": "1010740",
+    "link": "https://github.com/jazzyj-blip/IDV-assignment5.git",
+    "order": 0,
+    "github_username": "jazzyj-blip",
+    "avatar_url": "https://github.com/jazzyj-blip.png?size=200"
+  },
+  {
+    "name": "LIU GUIMENG",
+    "student_id": "1010826",
+    "link": "https://guimeng-leo-liu.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": null,
+    "avatar_url": "https://github.com/ghost.png?size=200"
+  },
+  {
+    "name": "Leyla Mutlu",
+    "student_id": "1010748",
+    "link": "https://lemmuz97-png.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "lemmuz97-png",
+    "avatar_url": "https://github.com/lemmuz97-png.png?size=200"
+  },
+  {
+    "name": "Li Zhiyi",
+    "student_id": "1010996",
+    "link": "https://lizhiyi1225-boop.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "lizhiyi1225-boop",
+    "avatar_url": "https://github.com/lizhiyi1225-boop.png?size=200"
+  },
+  {
+    "name": "Li xinyuan",
+    "student_id": "1010808",
+    "link": "https://lilyyyii.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "lilyyyii",
+    "avatar_url": "https://github.com/lilyyyii.png?size=200"
+  },
+  {
+    "name": "LiuLyu",
+    "student_id": "1010768",
+    "link": "https://ll-0116.github.io/github.io-IDV-assignment5/",
+    "order": 0,
+    "github_username": "ll-0116",
+    "avatar_url": "https://github.com/ll-0116.png?size=200"
+  },
+  {
+    "name": "Louis Guberti-Ng",
+    "student_id": "1011063",
+    "link": "https://louguberting.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "louguberting",
+    "avatar_url": "https://github.com/louguberting.png?size=200"
+  },
+  {
+    "name": "Luo Qiayue",
+    "student_id": "1009619",
+    "link": "https://luo0909.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "luo0909",
+    "avatar_url": "https://github.com/luo0909.png?size=200"
+  },
+  {
+    "name": "Luo Zihang",
+    "student_id": "1010681",
+    "link": "https://zluo8783-tech.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "zluo8783-tech",
+    "avatar_url": "https://github.com/zluo8783-tech.png?size=200"
+  },
+  {
+    "name": "Ma Zhen",
+    "student_id": "1010846",
+    "link": "https://zzz747214260-sudo.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "zzz747214260-sudo",
+    "avatar_url": "https://github.com/zzz747214260-sudo.png?size=200"
+  },
+  {
+    "name": "Maheepa Daham Walpita",
+    "student_id": "1011027",
+    "link": "https://maheepa98.github.io/IDV-assignment5/ & https://shorturl.at/Iphwa",
+    "order": 0,
+    "github_username": "maheepa98",
+    "avatar_url": "https://github.com/maheepa98.png?size=200"
+  },
+  {
+    "name": "Moyuan Li",
+    "student_id": "1009482",
+    "link": "https://shadehalves.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "shadehalves",
+    "avatar_url": "https://github.com/shadehalves.png?size=200"
+  },
+  {
+    "name": "Partha Pratim Sarkar",
+    "student_id": "1008365",
+    "link": "https://partha-ieee.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "partha-ieee",
+    "avatar_url": "https://github.com/partha-ieee.png?size=200"
+  },
+  {
+    "name": "SHA YIPING",
+    "student_id": "1010839",
+    "link": "https://shayiping.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "shayiping",
+    "avatar_url": "https://github.com/shayiping.png?size=200"
+  },
+  {
+    "name": "Sumaiyya Ali",
+    "student_id": "1011062",
+    "link": "https://sumaiyyaali268-dev.github.io/assignment-3-visualizations-sumaiyya-ali/",
+    "order": 0,
+    "github_username": "sumaiyyaali268-dev",
+    "avatar_url": "https://github.com/sumaiyyaali268-dev.png?size=200"
+  },
+  {
+    "name": "Tang Ming Hong Cyril",
+    "student_id": "1011114",
+    "link": "https://cerealinabox.github.io/",
+    "order": 0,
+    "github_username": "cerealinabox",
+    "avatar_url": "https://github.com/cerealinabox.png?size=200"
+  },
+  {
+    "name": "WANG YUTING",
+    "student_id": "1010783",
+    "link": "https://winni429.github.io/assignment5/",
+    "order": 0,
+    "github_username": "winni429",
+    "avatar_url": "https://github.com/winni429.png?size=200"
+  },
+  {
+    "name": "Wei Zihan",
+    "student_id": "1010817",
+    "link": "https://wei-zihan.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "wei-zihan",
+    "avatar_url": "https://github.com/wei-zihan.png?size=200"
+  },
+  {
+    "name": "Xia Yitian",
+    "student_id": "1010773",
+    "link": "https://xia126.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "xia126",
+    "avatar_url": "https://github.com/xia126.png?size=200"
+  },
+  {
+    "name": "YUAN YE",
+    "student_id": "1010759",
+    "link": "https://ymataz.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "ymataz",
+    "avatar_url": "https://github.com/ymataz.png?size=200"
+  },
+  {
+    "name": "Yan Yangtai",
+    "student_id": "1010756",
+    "link": "https://atay3e.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "atay3e",
+    "avatar_url": "https://github.com/atay3e.png?size=200"
+  },
+  {
+    "name": "Yang ShengHua",
+    "student_id": "1010991",
+    "link": "https://y2781647622-rgb.github.io/IDV-Assignment5/",
+    "order": 0,
+    "github_username": "y2781647622-rgb",
+    "avatar_url": "https://github.com/y2781647622-rgb.png?size=200"
+  },
+  {
+    "name": "Yao Yongkang",
+    "student_id": "1010979",
+    "link": "https://ricky3126714173.github.io/assignment5-/",
+    "order": 0,
+    "github_username": "ricky3126714173",
+    "avatar_url": "https://github.com/ricky3126714173.png?size=200"
+  },
+  {
+    "name": "Yu Zhuochen",
+    "student_id": "1009893",
+    "link": "https://1120192017.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "1120192017",
+    "avatar_url": "https://github.com/1120192017.png?size=200"
+  },
+  {
+    "name": "ZHANG MENGJIE",
+    "student_id": "1010797",
+    "link": "https://juliamjz.github.io/IDV-assignment5/assignment.html",
+    "order": 0,
+    "github_username": "juliamjz",
+    "avatar_url": "https://github.com/juliamjz.png?size=200"
+  },
+  {
+    "name": "Zhang Ningyi",
+    "student_id": "1011116",
+    "link": "http://nibiiro4.github.io/IDV-assignment5",
+    "order": 0,
+    "github_username": "nibiiro4",
+    "avatar_url": "https://github.com/nibiiro4.png?size=200"
+  },
+  {
+    "name": "Zhao Jie",
+    "student_id": "1010763",
+    "link": "http://nowater0418.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "nowater0418",
+    "avatar_url": "https://github.com/nowater0418.png?size=200"
+  },
+  {
+    "name": "Zhou Xunfan",
+    "student_id": "1011160",
+    "link": "https://xunfanzhou-stack.github.io/-ITACY-.github.io/subfolder5/A5.html",
+    "order": 0,
+    "github_username": "xunfanzhou-stack",
+    "avatar_url": "https://github.com/xunfanzhou-stack.png?size=200"
+  },
+  {
+    "name": "gao yuqian",
+    "student_id": "1010842",
+    "link": "https://yuqiangao23-crypto.github.io/gao/",
+    "order": 0,
+    "github_username": "yuqiangao23-crypto",
+    "avatar_url": "https://github.com/yuqiangao23-crypto.png?size=200"
+  },
+  {
+    "name": "huyangruotao",
+    "student_id": "1011001",
+    "link": "https://huyangruotao-maker.github.io/IDV-assignment5.github.io/",
+    "order": 0,
+    "github_username": "huyangruotao-maker",
+    "avatar_url": "https://github.com/huyangruotao-maker.png?size=200"
+  },
+  {
+    "name": "lilan",
+    "student_id": "1010791",
+    "link": "https://lwdtht-wq.github.io/IDV-assignment5/",
+    "order": 0,
+    "github_username": "lwdtht-wq",
+    "avatar_url": "https://github.com/lwdtht-wq.png?size=200"
+  },
+  {
+    "name": "shijiaomei",
+    "student_id": "1011073",
+    "link": "https://jiaomeishi.github.io/DV-assignment5/",
+    "order": 0,
+    "github_username": "jiaomeishi",
+    "avatar_url": "https://github.com/jiaomeishi.png?size=200"
+  },
+  {
+    "name": "zheng jiajin",
+    "student_id": "1010764",
+    "link": "https://j1aj1n.github.io/IDV-assignment5",
+    "order": 0,
+    "github_username": "j1aj1n",
+    "avatar_url": "https://github.com/j1aj1n.png?size=200"
+  }
+]
+
+</script>
+
+<script>
+  async function loadStudents() {
+    try {
+        const raw = document.getElementById("students-data").textContent;
+      const students = JSON.parse(raw);
+
+      
+
+      const grid = document.getElementById("grid");
+
+      students.forEach(s => {
+        const card = document.createElement("a");
+        card.className = "card";
+        card.href = s.link;
+        card.target = "_blank";
+
+        card.innerHTML = `
+          <img class="avatar" src="${s.avatar_url}">
+          <div class="name">${s.name}</div>
+          <div class="username">@${s.github_username || "unknown"}</div>
+          <div class="student-id">${s.student_id}</div>
+        `;
+
+        grid.appendChild(card);
+      });
+    } catch (e) {
+      console.error("Failed to load JSON:", e);
+    }
+  }
+
+  loadStudents();
+</script>
+
+</body>
+</html>
